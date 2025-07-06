@@ -4,8 +4,8 @@ set -e
 
 # Check for gum
 if ! command -v gum &>/dev/null; then
-  echo "Error: gum is not installed. Please install it from https://github.com/charmbracelet/gum"
-  exit 1
+    echo "Error: gum is not installed. Please install it from https://github.com/charmbracelet/gum"
+    exit 1
 fi
 
 # Select content type
@@ -16,23 +16,23 @@ title=$(gum input --placeholder "Title")
 slug=$(gum input --placeholder "Slug (file name, no spaces)")
 description=$(gum input --placeholder "Description")
 
-today=$(date +%F)
+today=$(date %F)
 
 # Helpers
 get_tags() {
-  gum input --placeholder "Comma-separated tags (tag1,tag2)"
+    gum input --placeholder "Comma-separated tags (tag1,tag2)"
 }
 
 get_bool() {
-  gum choose "true" "false"
+    gum choose "true" "false"
 }
 
 get_date() {
-  gum input --placeholder "YYYY-MM-DD" --value "$today"
+    gum input --placeholder "YYYY-MM-DD" --value "$today"
 }
 
 get_array() {
-  gum input --placeholder "Comma-separated list (item1,item2)"
+    gum input --placeholder "Comma-separated list (item1,item2)"
 }
 
 # Output path
@@ -42,7 +42,7 @@ mkdir -p "$outdir"
 
 # Build frontmatter
 case "$type" in
-  blog)
+blog)
     publishedAt=$(get_date)
     tags=$(get_tags)
     frontmatter="---
@@ -53,7 +53,7 @@ tags: [$(echo "$tags" | sed "s/,/','/g" | sed "s/^/'/" | sed "s/$/'/")]
 ---"
     ;;
 
-  bookmarks)
+bookmarks)
     author=$(gum input --placeholder "Author")
     url=$(gum input --placeholder "URL")
     publishedAt=$(get_date)
@@ -70,7 +70,7 @@ description: '$description'
 ---"
     ;;
 
-  notes)
+notes)
     publishedAt=$(get_date)
     category=$(gum input --placeholder "Category")
     frontmatter="---
@@ -81,7 +81,7 @@ category: '$category'
 ---"
     ;;
 
-  projects)
+projects)
     url=$(gum input --placeholder "Project URL")
     featured=$(get_bool)
     techs=$(get_array)
@@ -94,7 +94,7 @@ techs: [$(echo "$techs" | sed "s/,/','/g" | sed "s/^/'/" | sed "s/$/'/")]
 ---"
     ;;
 
-  experience)
+experience)
     logo=$(gum input --placeholder "Logo path (e.g. /logos/foo.png)")
     startDate=$(get_date)
     current=$(get_bool)
@@ -110,14 +110,14 @@ esac
 
 # Get content if applicable
 if [[ "$type" != "bookmarks" && "$type" != "experience" ]]; then
-  content=$(gum write --placeholder "Write content for the template")
+    content=$(gum write --placeholder "Write content for the template")
 else
-  content=""
+    content=""
 fi
 
 # Write file
-echo "$frontmatter" > "$outfile"
-echo "" >> "$outfile"
-echo "$content" >> "$outfile"
+echo "$frontmatter" >"$outfile"
+echo "" >>"$outfile"
+echo "$content" >>"$outfile"
 
 gum style --border double --padding "1 2" --margin "1" --foreground 212 "Created $outfile"
