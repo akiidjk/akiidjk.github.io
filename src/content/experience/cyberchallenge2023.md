@@ -1,5 +1,5 @@
 ---
-title: 'Finalist Cyberchallenge competition'
+title: 'Finalist of the CyberChallenge competition.'
 logo: 'https://ad.cyberchallenge.it/static/img/cyberchallenge.svg'
 description: 'Cyberchallenge 2023 competition finalist'
 startDate: '2023-07-10'
