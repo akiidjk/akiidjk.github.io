@@ -5,3 +5,7 @@ Simple portfolio/blog website built with [Astro](https://astro.build/). It showc
 ## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+## Features
+
+Cool script for create content using `gum`
