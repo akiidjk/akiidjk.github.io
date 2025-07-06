@@ -109,7 +109,7 @@ current: $current
 esac
 
 # Get content if applicable
-if [[ "$type" != "bookmarks" && "$type" != "experience" ]]; then
+if [[ "$type" != "bookmarks" && "$type" != "experience" && "$type" != "projects" ]]; then
     content=$(gum write --placeholder "Write content for the template")
 else
     content=""
