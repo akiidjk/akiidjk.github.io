@@ -1,0 +1,76 @@
+---
+import { NAVIGATION } from '@/constants/navigation';
+import SearchModalContent from '../SearchModalContent.astro';
+const pathname = new URL(Astro.request.url).pathname;
+
+const isActive = (path: string) => {
+  if (path === '/') return pathname === '/';
+  return pathname.startsWith(path);
+};
+---
+
+<nav class="w-full">
+  <SearchModalContent />
+  <div class="flex justify-between w-full">
+    <div class="nav-links">
+      {
+        NAVIGATION.map(({ name, path }) => (
+          <a href={path} class={isActive(path) ? 'active' : ''}>
+            {name}
+          </a>
+        ))
+      }
+    </div>
+    <div>
+      <button id="open-search" class="search-button" type="button"
+        >Search</button
+      >
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    transition: color var(--transition-base);
+    position: relative;
+  }
+
+  a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    transition: color var(--transition-base);
+    position: relative;
+  }
+
+  a:hover {
+    color: var(--color-text);
+  }
+
+  a.active {
+    color: var(--color-text) !important;
+  }
+
+  a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--text-muted);
+  }
+</style>

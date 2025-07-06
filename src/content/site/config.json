@@ -1,0 +1,32 @@
+{
+  "home": {
+    "name": "akiidjk",
+    "avatar": "https://avatars.githubusercontent.com/u/95577457?v=4",
+    "title": "Cybersec, Computer Science students & Curious Tinkerer",
+    "introduction": "I’m constantly learning and evolving. I love diving into new ideas and finding creative ways to solve problems.",
+    "sections": {
+      "blog": {
+        "title": "Writing",
+        "viewAllText": "View all posts"
+      },
+      "projects": {
+        "title": "Projects",
+        "viewAllText": "View all projects"
+      },
+      "experience": {
+        "title": "Experience",
+        "viewAllText": "View full résumé"
+      }
+    },
+    "socialLinks": [
+      {
+        "platform": "GitHub",
+        "url": "https://github.com/akiidjk"
+      },
+      {
+        "platform": "Twitter",
+        "url": "https://x.com/akiidjk"
+      }
+    ]
+  }
+}

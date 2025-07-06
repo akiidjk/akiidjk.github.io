@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/components/layout/BaseLayout.astro';
+import BaseHero from '@/components/shared/BaseHero.astro';
+import ArticleCard from '@/components/ui/ArticleCard.astro';
+import Container from '@/components/ui/Container.astro';
+import ContentList from '@/components/shared/ContentList.astro';
+
+const posts = await getCollection('projects', ({ data }) => {
+  return import.meta.env.PROD ? !data.featured : true;
+});
+---
+
+<BaseLayout title="Projects" description="Read about my latest projects">
+  <Container>
+    <BaseHero title="Projects" description="Read about my latest projects" />
+    <ContentList>
+      {
+        posts.map((post) => (
+          <ArticleCard
+            title={post.data.title}
+            description={post.data.description}
+            url={`/projects/${post.id}`}
+          />
+        ))
+      }
+    </ContentList>
+  </Container>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import SearchModal from '@/components/react/ModalController.tsx';
+---
+
+<>
+  <SearchModal />
+  <button id="open-search" class="search-button" type="button">Search</button>
+
+  <script is:inline>
+    const modal = document.getElementById('search-modal');
+    const openBtn = document.getElementById('open-search');
+    const closeBtn = modal?.querySelector('.close-btn');
+
+    if (modal && openBtn) {
+      openBtn.addEventListener('click', () => {
+        modal.classList.add('active');
+        const input = modal.querySelector("input[type='text']");
+        if (input instanceof HTMLInputElement) input.focus();
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+      });
+    }
+  </script>
+</>
