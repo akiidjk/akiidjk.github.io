@@ -120,8 +120,50 @@ const formatDate = (date: Date) => {
     padding-left: 1.5rem;
   }
 
-  .content :global(li) {
-    margin: 0.5rem 0;
+  .content :global(ul),
+  .content :global(ol) {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .content :global(ul li),
+  .content :global(ol li) {
+    position: relative; /* NECESSARIO per posizionare ::before */
+    margin: 0.75rem 0;
+    padding-left: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* UL custom dot */
+  .content :global(ul li::before) {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 0.5em;
+    height: 0.5em;
+    background-color: var(--accent, #4f46e5); /* fallback se manca la var */
+    border-radius: 50%;
+  }
+
+  /* OL custom number */
+  .content :global(ol) {
+    counter-reset: numbered;
+  }
+
+  .content :global(ol li) {
+    counter-increment: numbered;
+  }
+
+  .content :global(ol li::before) {
+    content: counter(numbered) '.';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 600;
+    color: var(--accent, #4f46e5);
   }
 
   @media (max-width: 640px) {
