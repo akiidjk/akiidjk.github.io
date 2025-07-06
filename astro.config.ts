@@ -17,7 +17,6 @@ export default defineConfig({
       allowedHosts: [
         'akiidjk.github.io',
         'localhost',
-        '1081-109-52-6-128.ngrok-free.app',
       ],
     },
     plugins: [tailwindcss()],
