@@ -16,7 +16,7 @@ title=$(gum input --placeholder "Title")
 slug=$(gum input --placeholder "Slug (file name, no spaces)")
 description=$(gum input --placeholder "Description")
 
-today=$(date %F)
+today=$(date +%F)
 
 # Helpers
 get_tags() {
