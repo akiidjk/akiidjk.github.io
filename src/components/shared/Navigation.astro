@@ -11,7 +11,7 @@ const isActive = (path: string) => {
 
 <nav class="w-full">
   <SearchModalContent />
-  <div class="flex justify-between w-full">
+  <div class="flex flex-col sm:flex-row justify-between w-full gap-4 sm:gap-0">
     <div class="nav-links">
       {
         NAVIGATION.map(({ name, path }) => (
@@ -21,10 +21,14 @@ const isActive = (path: string) => {
         ))
       }
     </div>
-    <div>
-      <button id="open-search" class="search-button" type="button"
-        >Search</button
+    <div class="w-full sm:w-auto mt-4 sm:mt-2">
+      <button
+        id="open-search"
+        class="search-button w-full sm:w-auto"
+        type="button"
       >
+        Search
+      </button>
     </div>
   </div>
 </nav>
